@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SistemPakar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--custom string-->
+    <string name="home">selamat datang di aplikasi</string>
+    <string name="dashboard">Dashboard Admin</string>
+    <string name="konsultasi">Konsultasi</string>
+    <string name="diagnosa">Diagnosa</string>
+    <string name="daftar_gejala">Daftar Gejala</string>
+    <string name="daftar_penyakit">Daftar Penyakit</string>
+    <string name="galeri">Gallery</string>
+    <string name="keluar">Exit</string>
+    <string name="tentang">Tentang</string>
+    <string name="login">Login</string>
+    <string name="form_ubah_data">Form Ubah Data</string>
+    <string name="form_tambah_data">Form Tambah Data</string>
+
+    <!--admin-->
+    <string name="lihat_data">Lihat Data</string>
+    <string name="kode_gejala">Kode</string>
+    <string name="nama_gejala">Nama</string>
+    <string name="solusi">Solusi</string>
+
+    <string name="ubah">Ubah Data</string>
+    <string name="simpan">Simpan Data</string>
+    <string name="hapus">Hapus Data</string>
+    <string name="reset">Reset</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

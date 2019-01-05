@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hilmi.sistempakar">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Index"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tentang.Tentang"
+            android:label="@string/tentang"
+            android:parentActivityName=".Index" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Index" />
+
+        <activity
+            android:name=".admin.LihatData"
+            android:label="@string/lihat_data"
+            android:parentActivityName=".Index">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Index" />
+        </activity>
+        <activity
+            android:name=".form.FormDiagnosa"
+            android:label="@string/diagnosa"
+            android:parentActivityName=".Index">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Index" />
+        </activity>
+        <activity android:name=".form.FormHasilDiagnosa" />
+        <activity
+            android:name=".login.Login"
+            android:label="@string/login"
+            android:parentActivityName=".Index">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Index" />
+        </activity>
+        <activity
+            android:name=".admin.Dashboard"
+            android:label="@string/dashboard" />
+
+        <activity android:name=".admin.TambahData" android:label="@string/form_tambah_data" android:parentActivityName=".admin.Dashboard" />
+
+        <activity android:name=".admin.UbahData" android:label="@string/form_ubah_data" android:parentActivityName=".admin.Dashboard">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".admin.Dashboard" />
+
+        </activity>
+    </application>
+
+</manifest>

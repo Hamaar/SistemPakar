@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_1"
+            android:icon="@drawable/ic_mulai_diagnosa"
+            android:title="@string/konsultasi" />
+        <item
+            android:id="@+id/nav_2"
+            android:icon="@drawable/ic_list"
+            android:title="@string/daftar_gejala" />
+        <item
+            android:id="@+id/nav_3"
+            android:icon="@drawable/ic_list2"
+            android:title="@string/daftar_penyakit" />
+        <item
+            android:id="@+id/nav_4"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/galeri" />
+    </group>
+
+    <item android:title="Opsi">
+        <menu>
+            <item
+                android:id="@+id/nav_5"
+                android:icon="@drawable/ic_exit"
+                android:title="@string/keluar" />
+        </menu>
+    </item>
+
+</menu>
