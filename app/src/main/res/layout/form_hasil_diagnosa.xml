@@ -11,51 +11,52 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="15dp"
-            android:textSize="15sp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
-            android:text="Berdasarkan konsultasi yang telah dilakukan, maka : "/>
+            android:gravity="center"
+            android:text="Berdasarkan konsultasi yang telah dilakukan, maka : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_penyakit"
             android:layout_gravity="center"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_penyakit" />
 
         <TextView
+            android:id="@+id/txtNamaHama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Hama"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:id="@+id/txtNamaHama"/>
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/txtDescHama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="15sp"
-            android:textColor="@color/search"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:id="@+id/txtDescHama"/>
+            android:gravity="center_vertical"
+            android:textColor="@color/search"
+            android:text="Desc Hama"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgKonsultasi"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Test" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imgKonsultasi"
-        android:text="Test"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:id="@+id/resultText"/>
-
-
 </RelativeLayout>
