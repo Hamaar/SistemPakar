@@ -43,7 +43,7 @@ public class FormDiagnosa extends AppCompatActivity {
     private GejalaItemAdapter gia;
     private Button btnDiagnosa;
     private Toolbar toolbar;
-    private List<Gejala> listgejalas;
+    private ArrayList<Gejala> listgejalas = new ArrayList<>();
     private EditText txtSearch;
     SQLiteDatabase sqlDbBaru;
 
@@ -139,6 +139,24 @@ public class FormDiagnosa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                for (int i = 0; i < listGejala.getCount(); i++) {
+                    if (listGejala.isItemChecked(i)) {
+
+                        String tesGejala = String.valueOf(listGejala.getItemAtPosition(i));
+                      //  System.out.println(tesGid);
+
+                        Gejala objt = new Gejala("tes", tesGejala);
+                        listgejalas.add(objt);
+
+                        Toast.makeText(getApplicationContext(), "Gejala : "+tesGejala, Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(FormDiagnosa.this, FormHasilDiagnosa.class);
+                        intent.putExtra("ITEMS", listgejalas);
+                        startActivity(intent);
+                    }
+                }
+
+                /* //Error
                 SparseBooleanArray checked = listGejala.getCheckedItemPositions();
                 if (checked.size() <= listgejalas.size()) {
                     ArrayList<Gejala> selectedItems = new ArrayList<Gejala>();
@@ -161,11 +179,14 @@ public class FormDiagnosa extends AppCompatActivity {
                 } else {
                     Toast.makeText(FormDiagnosa.this, "Gejala tidak boleh dipilih semua", Toast.LENGTH_SHORT).show();
                 }
+                */
             }
+
         });
     }
-    }
 
+
+}
 
 
 ////
