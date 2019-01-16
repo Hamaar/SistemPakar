@@ -8,6 +8,7 @@
     tools:context="com.example.hilmi.sistempakar.tentang.Tentang">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/crd1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -23,25 +24,33 @@
                 android:id="@+id/nim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="19dp"
-                android:text="NIM:"/>
+                android:text="NIM:"
+                android:textSize="19dp" />
 
 
             <TextView
                 android:id="@+id/nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="19dp"
                 android:layout_below="@id/nim"
-                android:text="NAMA: "/>
+                android:text="NAMA: "
+                android:textSize="19dp" />
 
             <TextView
                 android:id="@+id/jurusan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="19dp"
                 android:layout_below="@id/nama"
-                android:text="JURUSAN: "/>
+                android:text="JURUSAN: "
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/judulSkripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jurusan"
+                android:text="JUDUL SKRIPSI: "
+                android:textSize="19dp" />
 
 
             <!--right-->
@@ -51,32 +60,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="1115070063"
                 android:layout_toRightOf="@id/nim"
-                />
+                android:text="1115070063" />
 
 
             <TextView
-                android:id="@+id/tvNama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:text="Hilmi Hidayat"
-                android:layout_below="@id/nim"
-                android:layout_toRightOf="@id/nama"
-                />
+            android:id="@+id/tvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nim"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/nama"
+            android:text="Hilmi Hidayat" />
 
             <TextView
                 android:id="@+id/tvJurusan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:text="Teknik Infromatika"
                 android:layout_below="@id/nama"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/jurusan"
-                />
+                android:text="Teknik Infromatika" />
+
+            <TextView
+                android:id="@+id/tvJdlSkripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jurusan"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/judulSkripsi"
+                android:text="Sistem Pakar Diagnosis burung Lovebird Dengan Metode Forward Chaining Berbasis Android" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

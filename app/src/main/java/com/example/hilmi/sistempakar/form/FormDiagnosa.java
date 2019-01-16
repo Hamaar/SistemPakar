@@ -24,8 +24,8 @@ import android.widget.Toast;
 
 import com.example.hilmi.sistempakar.R;
 import com.example.hilmi.sistempakar.adapters.GejalaItemAdapter;
+import com.example.hilmi.sistempakar.admin.DashboardGejala;
 import com.example.hilmi.sistempakar.db.DbHelper;
-import com.example.hilmi.sistempakar.helpers.SQLiteHelper;
 import com.example.hilmi.sistempakar.models.Gejala;
 import com.example.hilmi.sistempakar.models.Keputusan;
 import com.example.hilmi.sistempakar.models.Penyakit;
@@ -49,12 +49,15 @@ public class FormDiagnosa extends AppCompatActivity {
 
 
 
-    DbHelper myDatabaseSql;
-    Cursor cursor;
+    DbHelper dbCenter;
+    protected Cursor cursor;
 
     String [] daftar_gejala;
     ListView lvGejala;
     ArrayAdapter<String> adapter;
+
+
+    public static FormDiagnosa refreshDiagnosa;
 
 
 
@@ -72,31 +75,40 @@ public class FormDiagnosa extends AppCompatActivity {
 
 
 
-        myDatabaseSql = new DbHelper(this);
+        dbCenter = new DbHelper(this);
         lvGejala = (ListView) findViewById(R.id.listGejala);
 
-        //membaca database
-        myDatabaseSql = new DbHelper(this);
-        SQLiteDatabase db_gejala = myDatabaseSql.getReadableDatabase();
-        myDatabaseSql.createTableGejala(db_gejala);
-        myDatabaseSql.isiTableGejala(db_gejala);
 
+        //membaca data
+        refreshDiagnosa = this;
+        dbCenter = new DbHelper(this);
+        setFrmRefresh();
 
-        cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
-        daftar_gejala = new String[cursor.getCount()];
-        cursor.moveToFirst();
-
-        //loping
-        for (int i=0; i< cursor.getCount(); i++){
-            cursor.moveToPosition(i);
-            daftar_gejala[i] = cursor.getString(1).toString();
-        }
-
-
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_multichoice, daftar_gejala);
-        listGejala.setAdapter(adapter);
-        listGejala.setChoiceMode(listGejala.CHOICE_MODE_MULTIPLE);
-        listGejala.setSelected(true);
+//
+//
+//
+//        //membaca database
+//        myDatabaseSql = new DbHelper(this);
+//        final SQLiteDatabase db_gejala = myDatabaseSql.getReadableDatabase();
+//        myDatabaseSql.createTableGejala(db_gejala);
+//        myDatabaseSql.isiTableGejala(db_gejala);
+//
+//
+//        cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
+//        daftar_gejala = new String[cursor.getCount()];
+//        cursor.moveToFirst();
+//
+//        //loping
+//        for (int i=0; i< cursor.getCount(); i++){
+//            cursor.moveToPosition(i);
+//            daftar_gejala[i] = cursor.getString(1).toString();
+//        }
+//
+//
+//        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_multichoice, daftar_gejala);
+//        listGejala.setAdapter(adapter);
+//        listGejala.setChoiceMode(listGejala.CHOICE_MODE_MULTIPLE);
+//        listGejala.setSelected(true);
 
 
 
@@ -111,10 +123,10 @@ public class FormDiagnosa extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //membaca database
-                myDatabaseSql = new DbHelper(getApplicationContext());
-                SQLiteDatabase db_gejala = myDatabaseSql.getReadableDatabase();
-                myDatabaseSql.createTableGejala(db_gejala);
-                myDatabaseSql.isiTableGejala(db_gejala);
+                dbCenter = new DbHelper(getApplicationContext());
+                SQLiteDatabase db_gejala = dbCenter.getReadableDatabase();
+                dbCenter.createTableGejala(db_gejala);
+                dbCenter.isiTableGejala(db_gejala);
 
 
                 cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
@@ -131,6 +143,7 @@ public class FormDiagnosa extends AppCompatActivity {
 
             }
         });
+
 
 
 
@@ -155,81 +168,38 @@ public class FormDiagnosa extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-
-                /* //Error
-                SparseBooleanArray checked = listGejala.getCheckedItemPositions();
-                if (checked.size() <= listgejalas.size()) {
-                    ArrayList<Gejala> selectedItems = new ArrayList<Gejala>();
-                    for (int i = 0; i < checked.size(); i++) {
-                        int pos = checked.keyAt(i);
-                        if (checked.valueAt(i))
-                            selectedItems.add((Gejala) gia.getItem(pos));
-                    }
-
-                    String[] outArr = new String[selectedItems.size()];
-                    for (int j = 0; j < selectedItems.size(); j++) {
-                        outArr[j] = selectedItems.get(j).getGid();
-                    }
-
-                    Intent i = new Intent(FormDiagnosa.this, FormHasilDiagnosa.class);
-                    Bundle b = new Bundle();
-                    b.putStringArray("selectedItems", outArr);
-                    i.putExtras(b);
-                    startActivity(i);
-                } else {
-                    Toast.makeText(FormDiagnosa.this, "Gejala tidak boleh dipilih semua", Toast.LENGTH_SHORT).show();
-                }
-                */
             }
 
         });
     }
 
 
+
+    //refresh
+    public void setFrmRefresh()
+    {
+        SQLiteDatabase db = dbCenter.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tbl_gejala",null);
+        daftar_gejala = new String[cursor.getCount()];
+        cursor.moveToFirst();
+
+
+
+        //loping
+        for (int i=0; i< cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            daftar_gejala[i] = cursor.getString(1).toString();
+        }
+
+
+        //list Checkbox
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_multichoice, daftar_gejala);
+        listGejala.setAdapter(adapter);
+        listGejala.setChoiceMode(listGejala.CHOICE_MODE_MULTIPLE);
+        listGejala.setSelected(true);
+    }
+
+
+
 }
 
-
-////
-////
-////                //loping
-////                for (int i = 0; i < cursor.getCount(); i++) {
-////                    cursor.moveToPosition(i);
-////                    daftar_diagnosa[i] = cursor.getString(1).toString();
-////
-////
-////                if (lvDiagnosa.isItemChecked(0)) {
-////                        Toast.makeText(getApplicationContext(), "" + daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////                if (lvDiagnosa.isItemChecked(1)) {
-////                        Toast.makeText(getApplicationContext(), ""  +daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////                if (lvDiagnosa.isItemChecked(2)) {
-////                        Toast.makeText(getApplicationContext(), "" + daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////                if (lvDiagnosa.isItemChecked(3)) {
-////                        Toast.makeText(getApplicationContext(), "" + daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////                if (lvDiagnosa.isItemChecked(4)) {
-////                        Toast.makeText(getApplicationContext(), ""  +daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////                if (lvDiagnosa.isItemChecked(5)) {
-////                        Toast.makeText(getApplicationContext(), "" + daftar_diagnosa[i], Toast.LENGTH_SHORT).show();
-////                    break;
-////                }
-////
-////                    else {
-////                        Toast.makeText(getApplicationContext(), "Data elum dipilih", Toast.LENGTH_SHORT).show();
-////                        break;
-////
-////                    }
-//                }
-//            }
-//
-//        });
-//    }
-//}

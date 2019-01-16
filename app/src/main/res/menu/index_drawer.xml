@@ -3,6 +3,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home2" />
+
+        <item
             android:id="@+id/nav_1"
             android:icon="@drawable/ic_mulai_diagnosa"
             android:title="@string/konsultasi" />
@@ -18,6 +23,11 @@
             android:id="@+id/nav_4"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/galeri" />
+
+        <item
+            android:id="@+id/nav_about_lb"
+            android:icon="@drawable/ic_lb"
+            android:title="@string/tentang_lovebird" />
     </group>
 
     <item android:title="Opsi">

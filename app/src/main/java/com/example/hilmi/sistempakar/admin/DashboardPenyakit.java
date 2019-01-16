@@ -26,12 +26,15 @@ import com.example.hilmi.sistempakar.db.DbHelper;
 public class DashboardPenyakit extends Fragment {
 
 
-    DbHelper dbSQLite;
-    Cursor cursor;
+    DbHelper dbCenter;
+    protected Cursor cursor;
     ArrayAdapter<String> adapter;
 
     String [] dashboard_penyakit;
     ListView lvPenyakit;
+
+
+    DashboardPenyakit refreshPenyakit;
 
 
 
@@ -50,29 +53,33 @@ public class DashboardPenyakit extends Fragment {
 
         lvPenyakit = (ListView) rootView.findViewById(R.id.lvDashboard);
 
-        dbSQLite = new DbHelper(getActivity());
-        SQLiteDatabase sql_penyakit = dbSQLite.getReadableDatabase();
-        dbSQLite.createTablePenyakit(sql_penyakit);
-        dbSQLite.isiTablePenyakit(sql_penyakit);
+        dbCenter = new DbHelper(getActivity());
 
-        cursor = sql_penyakit.rawQuery("SELECT * FROM tbl_penyakit", null);
-        dashboard_penyakit= new String[cursor.getCount()];
-        cursor.moveToFirst();
+
+        refreshPenyakit = this;
+        dbCenter = new DbHelper(getActivity());
+        setFrmRefresh();
 
 
 
-
-        //handle
-        //looping
-
-        for (int i=0; i < cursor.getCount(); i++){
-            cursor.moveToPosition(i);
-            dashboard_penyakit[i] = cursor.getString(1).toString();
-        }
-
-
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dashboard_penyakit);
-        lvPenyakit.setAdapter(adapter);
+//        cursor = sql_penyakit.rawQuery("SELECT * FROM tbl_penyakit", null);
+//        dashboard_penyakit= new String[cursor.getCount()];
+//        cursor.moveToFirst();
+//
+//
+//
+//
+//        //handle
+//        //looping
+//
+//        for (int i=0; i < cursor.getCount(); i++){
+//            cursor.moveToPosition(i);
+//            dashboard_penyakit[i] = cursor.getString(1).toString();
+//        }
+//
+//
+//        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dashboard_penyakit);
+//        lvPenyakit.setAdapter(adapter);
 
 
 
@@ -100,7 +107,7 @@ public class DashboardPenyakit extends Fragment {
                                 startActivity(in_update);
                                 break;
                             case 2:
-                                SQLiteDatabase db = dbSQLite.getWritableDatabase();
+                                SQLiteDatabase db = dbCenter.getWritableDatabase();
                                 db.execSQL("delete from tbl_penyakit WHERE nama_penyakit = '" + selection + "'");
                                 Toast.makeText(getActivity(), "Berhasil dihapus", Toast.LENGTH_SHORT).show();
                                 break;
@@ -130,5 +137,29 @@ public class DashboardPenyakit extends Fragment {
 
         return rootView;
     }
+
+
+    //refresh
+    public void setFrmRefresh()
+    {
+        SQLiteDatabase db = dbCenter.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tbl_penyakit",null);
+        dashboard_penyakit = new String[cursor.getCount()];
+        cursor.moveToFirst();
+
+
+
+
+        //loping
+        for (int i=0; i< cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            dashboard_penyakit[i] = cursor.getString(1).toString();
+        }
+
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dashboard_penyakit);
+        lvPenyakit.setAdapter(adapter);
+        lvPenyakit.setSelected(true);
+    }
+
 
 }

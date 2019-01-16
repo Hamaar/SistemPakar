@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.hilmi.sistempakar.admin.TambahData">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/lladd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--handle-->
+            <TextView
+                android:id="@+id/tvaddKode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:text="@string/kode_gejala"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtAddKode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <!--handle-->
+            <TextView
+                android:id="@+id/tvaddNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:text="@string/nama_gejala"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtAddNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--handle-->
+            <TextView
+                android:id="@+id/tvaddPenyebab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:text="@string/penyebab"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtAddPenyebab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--handle-->
+            <TextView
+                android:id="@+id/tvaddSolusi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:text="@string/solusi"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtAddSolusi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/btnTambahData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tambah_data"/>
+
+            <Button
+                android:id="@+id/btnTambahDataPenyakit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/simpan_penyakit"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reset"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

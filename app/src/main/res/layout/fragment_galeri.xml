@@ -11,6 +11,7 @@
 
         <ImageView
             android:id="@+id/ivGaleri"
+            android:src="@drawable/img_snot"
             android:layout_width="match_parent"
             android:layout_height="320dp" />
 
@@ -21,44 +22,68 @@
             android:layout_below="@+id/ivGaleri"
             android:textSize="19dp"
             android:gravity="center"
-            android:text="Deskripsi"/>
+            android:text="Penyakit Snot"/>
 
 
-
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/tvDeskripsi"
+    android:animateLayoutChanges="true"
+    android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_img1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Snot"/>
 
             <Button
+                android:id="@+id/btn_img2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Diare"/>
 
 
             <Button
+                android:id="@+id/btn_img3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Kapur"/>
+
+
+            <Button
+                android:id="@+id/btn_img4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nyilet"/>
+
+            <Button
+                android:id="@+id/btn_img5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kutu"/>
+
+
+            <Button
+                android:id="@+id/btn_img6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ganguan Pernafasan"/>
+
+            <Button
+                android:id="@+id/btn_img7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bubul"/>
+
+
         </LinearLayout>
+</HorizontalScrollView>
     </RelativeLayout>
 
 </FrameLayout>

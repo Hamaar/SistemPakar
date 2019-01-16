@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:background="@color/colorPrimary"
         android:id="@+id/topContent"
         android:orientation="horizontal">
         <EditText
@@ -20,7 +19,6 @@
             android:layout_height="wrap_content"
             android:hint="Cari gejala ..."
             android:singleLine="true"
-            android:background="@color/search"
             android:id="@+id/txtSearch"/>
     </LinearLayout>
 
