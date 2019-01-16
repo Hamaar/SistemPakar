@@ -113,7 +113,7 @@ public class FormDiagnosa extends AppCompatActivity {
 
 
 
-        //handle to search
+        //handle to search in database
         txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,15 +123,12 @@ public class FormDiagnosa extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //membaca database
-                dbCenter = new DbHelper(getApplicationContext());
-                SQLiteDatabase db_gejala = dbCenter.getReadableDatabase();
-                dbCenter.createTableGejala(db_gejala);
-                dbCenter.isiTableGejala(db_gejala);
-
-
-                cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
+                SQLiteDatabase db = dbCenter.getReadableDatabase();
+                cursor = db.rawQuery("SELECT * FROM tbl_gejala",null);
                 daftar_gejala = new String[cursor.getCount()];
                 cursor.moveToFirst();
+
+
 
                 //menampilkan search
                 adapter.getFilter().filter(s.toString());
@@ -152,6 +149,7 @@ public class FormDiagnosa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 for (int i = 0; i < listGejala.getCount(); i++) {
                     if (listGejala.isItemChecked(i)) {
 
@@ -167,6 +165,10 @@ public class FormDiagnosa extends AppCompatActivity {
                         intent.putExtra("ITEMS", listgejalas);
                         startActivity(intent);
                     }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Gejala tidak boleh dipilih semua", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             }
 
@@ -175,7 +177,7 @@ public class FormDiagnosa extends AppCompatActivity {
 
 
 
-    //refresh
+    //refresh page
     public void setFrmRefresh()
     {
         SQLiteDatabase db = dbCenter.getReadableDatabase();

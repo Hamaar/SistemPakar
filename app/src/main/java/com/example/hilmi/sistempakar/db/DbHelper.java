@@ -41,6 +41,13 @@ public class DbHelper extends SQLiteOpenHelper {
         dbSolusi.execSQL("CREATE TABLE IF NOT EXISTS tbl_solusi (kode_solusi TEXT PRIMARY KEY, nama_solusi TEXT)");
     }
 
+    //handle create table keputusan
+    public void createTableKeputusan(SQLiteDatabase dbKeputusan)
+    {
+        dbKeputusan.execSQL("DROP TABLE IF EXISTS tbl_keputusan");
+        dbKeputusan.execSQL("CREATE TABLE IF NOT EXISTS tbl_keputusan (key_id INTEGER PRIMARY KEY, key_penyakit TEXT, key_gejala TEXT)");
+    }
+
 
 
 
@@ -90,6 +97,12 @@ public class DbHelper extends SQLiteOpenHelper {
         dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S7', 'Beri obat mata');");
     }
 
+    public void isiTableKeputusan(SQLiteDatabase dbKeputusan)
+    {
+        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
+        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
+    }
+
 
 
 
@@ -108,6 +121,8 @@ public class DbHelper extends SQLiteOpenHelper {
       isiTablePenyakit(db);
       createTableSolusi(db);
       isiTableSolusi(db);
+      createTableKeputusan(db);
+      isiTableKeputusan(db);
 
     }
 
