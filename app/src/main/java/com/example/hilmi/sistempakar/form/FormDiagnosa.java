@@ -151,6 +151,7 @@ public class FormDiagnosa extends AppCompatActivity {
 
 
                 for (int i = 0; i < listGejala.getCount(); i++) {
+
                     if (listGejala.isItemChecked(i)) {
 
                         String tesGejala = String.valueOf(listGejala.getItemAtPosition(i));
@@ -165,10 +166,7 @@ public class FormDiagnosa extends AppCompatActivity {
                         intent.putExtra("ITEMS", listgejalas);
                         startActivity(intent);
                     }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Gejala tidak boleh dipilih semua", Toast.LENGTH_SHORT).show();
 
-                    }
                 }
             }
 

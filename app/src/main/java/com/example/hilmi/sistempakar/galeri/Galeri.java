@@ -46,8 +46,6 @@ public class Galeri extends Fragment {
         btn7 = (Button)rootView.findViewById(R.id.btn_img7);
 
 
-
-
         //klik
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
