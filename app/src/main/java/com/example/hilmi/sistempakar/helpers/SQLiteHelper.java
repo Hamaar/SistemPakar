@@ -222,4 +222,5 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return keputusans;
     }
 
+
 }

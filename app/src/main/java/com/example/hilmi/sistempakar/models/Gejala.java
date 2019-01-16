@@ -2,9 +2,6 @@ package com.example.hilmi.sistempakar.models;
 
 import java.io.Serializable;
 
-/**
- * Created by rama on 11/5/16.
- */
 
 public class Gejala implements Serializable {
     private int id;

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.hilmi.sistempakar.admin.Dashboard">
 
-
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,27 +16,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/admin"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="21dp"
-                android:text="Dashboard Admin"/>
+        <TextView
+            android:id="@+id/admin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="21dp"
+            android:text="Dashboard Admin"/>
 
-            <Button
-                android:id="@+id/imgExit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Keluar"
-                android:layout_toRightOf="@+id/admin"/>
+        <Button
+            android:id="@+id/imgExit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Keluar"
+            android:layout_toRightOf="@+id/admin"/>
         </RelativeLayout>
     </Toolbar>
-
+    
     <FrameLayout
         android:id="@+id/content_dashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:layout_above="@+id/nav_dasboard"/>
 
     <android.support.design.widget.BottomNavigationView

@@ -10,10 +10,12 @@ import android.widget.TextView;
 import com.example.hilmi.sistempakar.R;
 import com.example.hilmi.sistempakar.db.DbHelper;
 
+import org.w3c.dom.Text;
+
 public class LihatData extends AppCompatActivity {
 
     DbHelper dbLihatData;
-    Cursor cursor;
+    protected Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,11 @@ public class LihatData extends AppCompatActivity {
         TextView tv1 = (TextView)findViewById(R.id.tv1);
         TextView tv2 = (TextView)findViewById(R.id.tv2);
         TextView tv3 = (TextView)findViewById(R.id.tv3);
+        TextView tv4 = (TextView)findViewById(R.id.tv4);
 
         TextView tvKode     = (TextView) findViewById(R.id.tvlihatKode);
         TextView tvNm       = (TextView) findViewById(R.id.tvlihatNama);
+        TextView tvPenyebab = (TextView) findViewById(R.id.tvlihatPenyebab);
         TextView tvSolusi   = (TextView) findViewById(R.id.tvlihatSolusi);
 
 
@@ -35,33 +39,59 @@ public class LihatData extends AppCompatActivity {
 
         dbLihatData = new DbHelper(this);
 
-        //hanndle lihat form gejala
-        //melihat data dari formGejala
-        SQLiteDatabase form_lihat_gejala = dbLihatData.getReadableDatabase();
-        dbLihatData.createTableGejala(form_lihat_gejala);
-        dbLihatData.isiTableGejala(form_lihat_gejala);
 
-        cursor = form_lihat_gejala.rawQuery("SELECT * FROM tbl_gejala WHERE nama_gejala= '" + getIntent().getStringExtra("nama_gejala") + "'", null);
+        //handle Lihat Table Gejala
+        SQLiteDatabase db = dbLihatData.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tbl_gejala WHERE nama_gejala = '" + getIntent().getStringExtra("nama_gejala") + "'",null);
         cursor.moveToFirst();
-        if (cursor.getCount() > 0) {
+
+
+        if (cursor.getCount()>0)
+        {
             cursor.moveToPosition(0);
             tvKode.setText(cursor.getString(0).toString());
             tvNm.setText(cursor.getString(1).toString());
-
-            //
             tv1.setText("Kode Gejala");
             tv2.setText("Nama Gejala");
+
             tv3.setVisibility(View.GONE);
+            tv4.setVisibility(View.GONE);
+            tvPenyebab.setVisibility(View.GONE);
             tvSolusi.setVisibility(View.GONE);
+
+
         }
+
+
+
+
+//
+////        //hanndle lihat form gejala
+////        //melihat data dari formGejala
+////        SQLiteDatabase form_lihat_gejala = dbLihatData.getReadableDatabase();
+////        dbLihatData.createTableGejala(form_lihat_gejala);
+////        dbLihatData.isiTableGejala(form_lihat_gejala);
+//
+//        cursor = db.rawQuery("SELECT * FROM tbl_gejala WHERE nama_gejala= '" + getIntent().getStringExtra("nama_gejala") + "'", null);
+//        cursor.moveToFirst();
+//        if (cursor.getCount() > 0) {
+//            cursor.moveToPosition(0);
+//            tvKode.setText(cursor.getString(0).toString());
+//            tvNm.setText(cursor.getString(1).toString());
+//
+//            //
+//            tv1.setText("Kode Gejala");
+//            tv2.setText("Nama Gejala");
+//            tv3.setVisibility(View.GONE);
+//            tvSolusi.setVisibility(View.GONE);
+//        }
 
 
 
         //hanndle lihat form Penyakit
         //melihat data dari formPenyakit
         SQLiteDatabase form_lihat_penyakit = dbLihatData.getReadableDatabase();
-        dbLihatData.createTablePenyakit(form_lihat_penyakit);
-        dbLihatData.isiTablePenyakit(form_lihat_penyakit);
+
 
         cursor = form_lihat_penyakit.rawQuery("SELECT * FROM tbl_penyakit WHERE nama_penyakit= '" + getIntent().getStringExtra("nama_penyakit") + "'", null);
 //        cursor = form_lihat_gejala.rawQuery("SELECT kode_penyakit, nama_penyakit FROM tbl_penyakit INNER JOIN tbl_solusi ON kode_penyakit = kode_solusi ", null);
@@ -70,11 +100,14 @@ public class LihatData extends AppCompatActivity {
             cursor.moveToPosition(0);
             tvKode.setText(cursor.getString(0).toString());
             tvNm.setText(cursor.getString(1).toString());
+            tvPenyebab.setText(cursor.getString(2).toString());
 
             //
             tv1.setText("Kode Penyakit");
             tv2.setText("Nama Penyakit");
-            tv3.setVisibility(View.GONE);
+            tv3.setText("Penyebab");
+
+            tv4.setVisibility(View.GONE);
             tvSolusi.setVisibility(View.GONE);
         }
     }

@@ -24,11 +24,15 @@ import com.example.hilmi.sistempakar.db.DbHelper;
 public class FormGejala extends Fragment {
 
     DbHelper myDatabaseSql;
-    Cursor cursor;
+    protected Cursor cursor;
 
-    String [] daftar_gejala;
+    String[] daftar_gejala;
     ListView lvGejala;
     ArrayAdapter<String> adapter;
+
+    public static FormGejala frmRefresh;
+
+
 
     public FormGejala() {
         // Required empty public constructor
@@ -42,30 +46,20 @@ public class FormGejala extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_form_gejala, container, false);
 
 
-        myDatabaseSql = new DbHelper(getActivity());
         lvGejala = (ListView) rootView.findViewById(R.id.list_gejala);
 
+
+        ///read
+
+        frmRefresh = this;
         //membaca database
         myDatabaseSql = new DbHelper(getActivity());
-        SQLiteDatabase db_gejala = myDatabaseSql.getReadableDatabase();
-        myDatabaseSql.createTableGejala(db_gejala);
-        myDatabaseSql.isiTableGejala(db_gejala);
+        setFrmRefresh();
 
 
-        cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
-        daftar_gejala = new String[cursor.getCount()];
-        cursor.moveToFirst();
-
-        //loping
-        for (int i=0; i< cursor.getCount(); i++){
-                cursor.moveToPosition(i);
-                daftar_gejala[i] = cursor.getString(1).toString();
-        }
 
 
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, daftar_gejala);
-        lvGejala.setAdapter(adapter);
-        lvGejala.setSelected(true);
+
 
 
         //klik
@@ -82,6 +76,29 @@ public class FormGejala extends Fragment {
 
 
         return rootView;
+    }
+
+
+
+    //refresh
+    public void setFrmRefresh()
+    {
+        SQLiteDatabase db = myDatabaseSql.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tbl_gejala",null);
+        daftar_gejala = new String[cursor.getCount()];
+        cursor.moveToFirst();
+
+
+
+        //loping
+        for (int i=0; i< cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            daftar_gejala[i] = cursor.getString(1).toString();
+        }
+
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, daftar_gejala);
+        lvGejala.setAdapter(adapter);
+        lvGejala.setSelected(true);
     }
 
 }
