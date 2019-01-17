@@ -15,11 +15,11 @@ import java.util.List;
 
 
 
-public class HamaItemAdapter extends BaseAdapter {
+public class PenyakitItemAdapter extends BaseAdapter {
     private List<Penyakit> hamas;
     private Context context;
 
-    public HamaItemAdapter(List<Penyakit> hamas, Context context) {
+    public PenyakitItemAdapter(List<Penyakit> hamas, Context context) {
         this.hamas = hamas;
         this.context = context;
     }

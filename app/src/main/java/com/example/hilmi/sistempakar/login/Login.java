@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
 
                 }
-                if (keyUser.equals("1") && keyPass.equals("1")){
+                if (keyUser.equals("admin") && keyPass.equals("admin")){
 
                     Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), Dashboard.class);

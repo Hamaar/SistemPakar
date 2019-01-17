@@ -10,52 +10,81 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="15dp"
-            android:textSize="15sp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
-            android:text="Berdasarkan konsultasi yang telah dilakukan, maka : "/>
+            android:gravity="center"
+            android:text="Berdasarkan konsultasi yang telah dilakukan, maka : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/txtNamaPenyakit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Nama Penyakit"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_penyakit"
             android:layout_gravity="center"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_penyakit" />
+
+
 
         <TextView
+            android:id="@+id/txtDescHama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:id="@+id/txtNamaHama"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="15sp"
-            android:textColor="@color/search"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:id="@+id/txtDescHama"/>
+            android:gravity="center_vertical"
+            android:textColor="@color/search"
+            android:text="Penyebab"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgKonsultasi"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Solusi" />
     </LinearLayout>
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imgKonsultasi"
-        android:text="Test"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:id="@+id/resultText"/>
+        android:gravity="center_horizontal">
 
+        <Button
+            android:id="@+id/btnPeriksaUlang"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Periksa Ulang"/>
 
+        <Button
+            android:id="@+id/btnSelesai"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Selesai"/>
+    </LinearLayout>
 </RelativeLayout>

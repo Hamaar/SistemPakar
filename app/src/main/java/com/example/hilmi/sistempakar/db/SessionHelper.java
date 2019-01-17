@@ -1,11 +1,9 @@
-package com.example.hilmi.sistempakar.helpers;
+package com.example.hilmi.sistempakar.db;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by rama on 11/5/16.
- */
+
 
 public class SessionHelper {
     SharedPreferences pref;

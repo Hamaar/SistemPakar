@@ -1,8 +1,6 @@
 package com.example.hilmi.sistempakar.models;
 
-/**
- * Created by rama on 11/5/16.
- */
+
 
 public class Keputusan {
     private int id;

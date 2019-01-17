@@ -23,13 +23,14 @@ import com.example.hilmi.sistempakar.db.DbHelper;
  */
 public class FormPenyakit extends Fragment {
 
-    DbHelper dbSQLite;
-    Cursor cursor;
+    DbHelper dbCenter;
+    protected Cursor cursor;
 
     String [] daftar_penyakit;
     ArrayAdapter<String> adapter;
 
     ListView lvPenyakit;
+
 
 
     public FormPenyakit() {
@@ -45,10 +46,8 @@ public class FormPenyakit extends Fragment {
 
         lvPenyakit = (ListView) rootView.findViewById(R.id.list_penyakit);
 
-        dbSQLite = new DbHelper(getActivity());
-        SQLiteDatabase sql_form_penyakit = dbSQLite.getReadableDatabase();
-        dbSQLite.createTablePenyakit(sql_form_penyakit);
-        dbSQLite.isiTablePenyakit(sql_form_penyakit);
+        dbCenter = new DbHelper(getActivity());
+        SQLiteDatabase sql_form_penyakit = dbCenter.getReadableDatabase();
 
 
         cursor = sql_form_penyakit.rawQuery("SELECT * FROM tbl_penyakit", null);

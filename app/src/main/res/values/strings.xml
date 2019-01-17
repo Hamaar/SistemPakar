@@ -6,29 +6,41 @@
 
     <!--custom string-->
     <string name="home">selamat datang di aplikasi</string>
+    <string name="home2">Home</string>
     <string name="dashboard">Dashboard Admin</string>
     <string name="konsultasi">Konsultasi</string>
     <string name="diagnosa">Diagnosa</string>
     <string name="daftar_gejala">Daftar Gejala</string>
     <string name="daftar_penyakit">Daftar Penyakit</string>
+    <string name="keputusan">Keputusan</string>
     <string name="galeri">Gallery</string>
+    <string name="tentang_lovebird">Tentang Lovebird</string>
     <string name="keluar">Exit</string>
     <string name="tentang">Tentang</string>
     <string name="login">Login</string>
     <string name="form_ubah_data">Form Ubah Data</string>
     <string name="form_tambah_data">Form Tambah Data</string>
+    <string name="hasil_diagnosa">Hasil Diagnosis</string>
 
     <!--admin-->
     <string name="lihat_data">Lihat Data</string>
     <string name="kode_gejala">Kode</string>
     <string name="nama_gejala">Nama</string>
+    <string name="penyebab">Penyebab</string>
     <string name="solusi">Solusi</string>
 
     <string name="ubah">Ubah Data</string>
     <string name="simpan">Simpan Data</string>
+
     <string name="hapus">Hapus Data</string>
     <string name="reset">Reset</string>
 
+
+    <string name="tambah_data">Simpan Data Gejala</string>
+    <string name="simpan_penyakit">Simpan Data Penyakit</string>
+    <string name="ubah_data">Ubah Data</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tes_hafis">Tes Hafis</string>
 </resources>

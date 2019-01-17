@@ -20,7 +20,6 @@ import com.example.hilmi.sistempakar.R;
 import com.example.hilmi.sistempakar.db.DbHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -28,14 +27,18 @@ import java.util.List;
  */
 public class DashboardGejala extends Fragment {
 
-    private DbHelper dbSQLite;
-    Cursor cursor;
+     DbHelper dbSQLite;
+    protected Cursor cursor;
+
     ArrayAdapter<String> adapter;
 
     String [] dashboard_gejala;
     ListView lvGejala;
 
     ArrayList<String> ListData;
+
+
+    public static DashboardGejala refreshGejala;
 
 
     public DashboardGejala() {
@@ -56,7 +59,7 @@ public class DashboardGejala extends Fragment {
 
 
         //handle tambah data
-        FloatingActionButton btn_fab = (FloatingActionButton)rootView. findViewById(R.id.fab_tambahdata);
+        FloatingActionButton btn_fab = (FloatingActionButton) rootView.findViewById(R.id.fab_tambahdata);
         btn_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,41 +70,43 @@ public class DashboardGejala extends Fragment {
         });
 
 
-
-
-//lihat data di list
-        dbSQLite = new DbHelper(getContext());
-        SQLiteDatabase db_gejala = dbSQLite.getReadableDatabase();
-        cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
-        dashboard_gejala = new String[cursor.getCount()];
+        //membaca data
+        refreshGejala = this;
+        dbSQLite = new DbHelper(getActivity());
+        setFrmRefresh();
 
 
 
-        cursor.moveToFirst();//Memulai Cursor pada Posisi Awal
-        //Melooping Sesuai Dengan Jumlan Data (Count) pada cursor
-        for(int count=0; count < cursor.getCount(); count++){
+//
+////lihat data di list
+//        dbSQLite = new DbHelper(getContext());
+//        SQLiteDatabase db_gejala = dbSQLite.getReadableDatabase();
+//        cursor = db_gejala.rawQuery("SELECT * FROM tbl_gejala", null);
+//        dashboard_gejala = new String[cursor.getCount()];
+//
+//
+//
+//        cursor.moveToFirst();//Memulai Cursor pada Posisi Awal
+//        //Melooping Sesuai Dengan Jumlan Data (Count) pada cursor
+//        for(int count=0; count < cursor.getCount(); count++){
+//
+//            cursor.moveToPosition(count);//Berpindah Posisi dari no index 0 hingga no index terakhir
+//            dashboard_gejala[count] = cursor.getString(1).toString();
+//
+//
+//        }
+//
+//
+////        //handle to looping
+////       // cursor.moveToNext();
+////        //cursor.getColumnCount();
+////        for (int i = 0; i < cursor.getCount(); i++) {
+////            cursor.moveToPosition(i);
+////            dashboard_gejala[i] = cursor.getString(1).toString();
+////            //cursor.getString(1) isi dari filed 2
+////            }
 
-            cursor.moveToPosition(count);//Berpindah Posisi dari no index 0 hingga no index terakhir
-            dashboard_gejala[count] = cursor.getString(1).toString();
 
-
-        }
-
-
-//        //handle to looping
-//       // cursor.moveToNext();
-//        //cursor.getColumnCount();
-//        for (int i = 0; i < cursor.getCount(); i++) {
-//            cursor.moveToPosition(i);
-//            dashboard_gejala[i] = cursor.getString(1).toString();
-//            //cursor.getString(1) isi dari filed 2
-//            }
-
-
-
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dashboard_gejala);
-        lvGejala.setAdapter(adapter);
-        lvGejala.setSelected(true);
 
 
 
@@ -145,5 +150,29 @@ public class DashboardGejala extends Fragment {
         ((ArrayAdapter) lvGejala.getAdapter()).notifyDataSetInvalidated();
         return rootView;
     }
+
+
+    //refresh
+    public void setFrmRefresh()
+    {
+        SQLiteDatabase db = dbSQLite.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tbl_gejala",null);
+        dashboard_gejala = new String[cursor.getCount()];
+        cursor.moveToFirst();
+
+
+
+
+        //loping
+        for (int i=0; i< cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            dashboard_gejala[i] = cursor.getString(1).toString();
+        }
+
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dashboard_gejala);
+        lvGejala.setAdapter(adapter);
+        lvGejala.setSelected(true);
+    }
+
 
 }
