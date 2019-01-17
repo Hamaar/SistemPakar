@@ -118,7 +118,9 @@ public class FormHasilDiagnosa extends AppCompatActivity {
         for (String key : keySet) {
             float ms = Float.parseFloat(chains.get(key).get(0));
             float ma = chains.get(key).size() - 1;
-            float current = ma / ms * 100;
+
+
+            float current = ma / ms;
             if (current >= top) {
                 top = current;
                 keyset = key;
