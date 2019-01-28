@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        tools:targetApi="lollipop">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,6 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/dashboard_navigation"></android.support.design.widget.BottomNavigationView>
+        app:menu="@menu/dashboard_navigation" />
 
 </RelativeLayout>

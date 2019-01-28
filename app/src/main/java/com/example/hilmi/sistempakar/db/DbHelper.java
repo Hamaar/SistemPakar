@@ -88,20 +88,21 @@ public class DbHelper extends SQLiteOpenHelper {
     //handle isi solusi
     public void isiTableSolusi(SQLiteDatabase dbSolusi)
     {
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S1', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S2', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S3', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S4', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S5', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S6', 'Beri obat mata');");
-        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('S7', 'Beri obat mata');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P1', 'G2, G4, G11');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P2', 'G4, G10');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P3', 'G3, G5, G9');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P4', 'G3, G6, G9');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P5', 'G7, G8, G10');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P6', 'G9, G10');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P7', 'G3, G11, G14');");
+        dbSolusi.execSQL("INSERT INTO tbl_solusi VALUES('P8', 'G10, G12');");
     }
 
-    public void isiTableKeputusan(SQLiteDatabase dbKeputusan)
-    {
-        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
-        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
-    }
+//    public void isiTableKeputusan(SQLiteDatabase dbKeputusan)
+//    {
+//        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
+//        dbKeputusan.execSQL("INSERT INTO tbl_keputusan VALUES ('P01', 'G01', 'S1')");
+//    }
 
 
 
@@ -122,7 +123,7 @@ public class DbHelper extends SQLiteOpenHelper {
       createTableSolusi(db);
       isiTableSolusi(db);
       createTableKeputusan(db);
-      isiTableKeputusan(db);
+      //isiTableKeputusan(db);
 
     }
 

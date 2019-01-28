@@ -157,11 +157,12 @@ public class FormDiagnosa extends AppCompatActivity {
                         String tesGejala = String.valueOf(listGejala.getItemAtPosition(i));
                       //  System.out.println(tesGid);
 
-                        Gejala objt = new Gejala("tes", tesGejala);
+                        Gejala objt = new Gejala( tesGejala, tesGejala);
                         listgejalas.add(objt);
 
                         Toast.makeText(getApplicationContext(), "Gejala : "+tesGejala, Toast.LENGTH_SHORT).show();
-
+                        System.out.println("TES "+daftar_gejala);
+     //                   Toast.makeText(getApplicationContext(), "Kode Gejala"+objt.getGid(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(FormDiagnosa.this, FormHasilDiagnosa.class);
                         intent.putExtra("ITEMS", listgejalas);
                         startActivity(intent);
@@ -188,7 +189,7 @@ public class FormDiagnosa extends AppCompatActivity {
         //loping
         for (int i=0; i< cursor.getCount(); i++){
             cursor.moveToPosition(i);
-            daftar_gejala[i] = cursor.getString(1).toString();
+            daftar_gejala[i] = cursor.getString(0);
         }
 
 

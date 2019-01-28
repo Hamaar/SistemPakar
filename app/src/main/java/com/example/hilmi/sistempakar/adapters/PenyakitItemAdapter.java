@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hilmi.sistempakar.R;
+import com.example.hilmi.sistempakar.form.FormPenyakit;
 import com.example.hilmi.sistempakar.models.Penyakit;
 
 import java.util.List;

@@ -17,6 +17,7 @@ import com.example.hilmi.sistempakar.models.Keputusan;
 import com.example.hilmi.sistempakar.models.Penyakit;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -34,15 +35,15 @@ public class FormHasilDiagnosa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_hasil_diagnosa);
 
-        Button btnPeriksaUlang = (Button)findViewById(R.id.btnPeriksaUlang);
-        Button btnSelesai = (Button)findViewById(R.id.btnSelesai);
+        Button btnPeriksaUlang = (Button) findViewById(R.id.btnPeriksaUlang);
+        Button btnSelesai = (Button) findViewById(R.id.btnSelesai);
 
 
         //klik
         btnPeriksaUlang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent i = new Intent(getApplicationContext(), FormDiagnosa.class);
+                Intent i = new Intent(getApplicationContext(), FormDiagnosa.class);
                 startActivity(i);
             }
         });
@@ -64,14 +65,28 @@ public class FormHasilDiagnosa extends AppCompatActivity {
         for (Gejala item :
                 receivedItemsList) {
             Log.e("Print Item name: ", item.getGejala() + "");
+//            results = new String[Integer.parseInt(item.getGejala())];
 
+            //     Log.e("Result" , Arrays.toString(results));
+            for (Keputusan keputusan : SQLiteHelper.getInstance(this).getAllKeputusan()) {
+                if (keputusan.getGid().contains(item.getGejala() + ",")) {
+                    if (chains.containsKey(keputusan.getPid())) {
+                        chains.get(keputusan.getPid()).add(item.getGejala());
+                    } else {
+                        ArrayList<String> str = new ArrayList<>();
+                        str.add(keputusan.getGid().split(",").length + "");
+                        str.add(item.getGejala());
+                        chains.put(keputusan.getPid(), str);
+
+                    }
+                }
+            }
+
+
+            // getBundle();
+//        chainProcess();
+            setupData();
         }
-
-        results = new String[receivedItemsList.size()];
-
-        // getBundle();
-        chainProcess();
-      // setupData();
     }
 
 
@@ -129,7 +144,9 @@ public class FormHasilDiagnosa extends AppCompatActivity {
 
         Penyakit hama = SQLiteHelper.getInstance(this).getHama(keyset);
 
-        txtNamaHama.setText(hama.getNama());
-        txtDescHama.setText(hama.getCara());
+        System.out.println(hama.getNama());
+        System.out.println(hama.getCara());
+        //txtNamaHama.setText(hama.getNama());
+        //txtDescHama.setText(hama.getCara());
     }
 }

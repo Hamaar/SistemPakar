@@ -13,10 +13,16 @@ public class Gejala implements Serializable {
         this.gejala = gejala;
     }
 
-    public Gejala(String gid, String gejala) {
-        this.gid = gid;
+//    public Gejala( String gejala) {
+//
+//        this.gejala = gejala;
+//    }
+    public Gejala( String kode_gejala, String gejala) {
+
         this.gejala = gejala;
+        this.gid = gejala;
     }
+
 
     public int getId() {
         return id;

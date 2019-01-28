@@ -6,5 +6,5 @@
     <color name="search">#ff8800</color>
     <color name="white">#ffffff</color>
 
-    <color name="transparent">#ffffff</color>
+    <color name="transparent">#000</color>
 </resources>

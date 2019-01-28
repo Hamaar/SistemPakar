@@ -18,7 +18,7 @@ import java.util.List;
 public class SQLiteHelper extends SQLiteOpenHelper {
     static SQLiteHelper sqh;
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "databaseKu";
+    private static final String DATABASE_NAME = "TesKuV2";
 
     //TABLE
     private static final String TABLE_HAMA = "hama";
